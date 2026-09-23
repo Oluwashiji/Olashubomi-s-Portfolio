@@ -36,15 +36,32 @@
   @media (max-width:640px){ nav{display:none;} }
 
   /* HERO */
-  .hero{padding:5rem 1.5rem 4rem; display:grid; grid-template-columns:1.2fr .8fr; gap:3rem; align-items:center; max-width:1100px; margin:0 auto;}
+  .hero{padding:2.5rem 1.5rem 4rem; display:grid; grid-template-columns:.85fr 1fr; gap:3.5rem; align-items:center; max-width:1200px; margin:0 auto;}
   .hero .eyebrow{color:var(--accent);}
   .hero h1{font-size:clamp(2.4rem,5vw,3.6rem); line-height:1.08;}
   .hero p{color:var(--muted); max-width:46ch; margin-top:1.2rem; font-size:1.02rem;}
   .hero-ctas{margin-top:1.8rem; display:flex; gap:1rem; flex-wrap:wrap;}
   .btn-primary{background:var(--accent); color:#fff; padding:.85rem 1.6rem; border-radius:999px; font-size:.92rem; font-weight:500; box-shadow:0 0 26px var(--accent-glow);}
   .btn-ghost{border:1px solid var(--line); padding:.85rem 1.6rem; border-radius:999px; font-size:.92rem; color:var(--text);}
-  .avatar{width:260px; height:320px; border-radius:22px; margin-left:auto; background:linear-gradient(155deg,var(--bg-alt),#1c1826); border:1px dashed var(--accent-dim); display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'Poppins',sans-serif; font-weight:600; font-size:2.4rem; box-shadow:0 0 60px var(--accent-glow);}
-  @media (max-width:760px){ .hero{grid-template-columns:1fr; text-align:left;} .avatar{margin:0; width:170px; height:210px; font-size:1.8rem;} }
+  .avatar{width:100%; height:min(78vh,640px); border-radius:22px; background:linear-gradient(155deg,var(--bg-alt),#1c1826); border:3px solid var(--accent); display:flex; align-items:center; justify-content:center; overflow:hidden; color:var(--muted); font-family:'Poppins',sans-serif; font-weight:600; font-size:2.4rem; box-shadow:0 0 60px var(--accent-glow);}
+  .avatar img{width:100%; height:100%; object-fit:cover;}
+  @media (max-width:760px){ .hero{grid-template-columns:1fr; text-align:left;} .avatar{height:340px; order:-1;} }
+
+  /* SKILLS TICKER */
+  .ticker-wrap{border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; padding:1.4rem 0; background:var(--bg);}
+  .ticker{display:flex; width:max-content; gap:2.2rem; animation:ticker-scroll 28s linear infinite;}
+  .ticker span{white-space:nowrap; font-family:'Poppins',sans-serif; font-weight:600; font-size:.95rem; letter-spacing:.04em; color:var(--accent); display:flex; align-items:center; gap:2.2rem;}
+  .ticker span.sep{color:var(--muted); font-weight:400;}
+  @keyframes ticker-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ABOUT INTRO + STATS */
+  .about-intro{padding-top:5rem;}
+  .about-intro .eyebrow{color:var(--accent); font-style:italic; font-family:'Fraunces',serif; font-size:2.2rem; margin-bottom:1.4rem;}
+  .about-intro .lede{font-family:'Fraunces',serif; font-size:1.25rem; color:var(--text); margin-bottom:1.2rem; max-width:60ch;}
+  .about-intro p{color:var(--muted); max-width:65ch; margin-bottom:1rem;}
+  .stats-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--line);}
+  .stat-num{font-family:'Poppins',sans-serif; font-weight:800; font-size:2.75rem; color:var(--accent);}
+  .stat-label{color:var(--muted); font-size:.95rem; margin-top:.3rem;}
 
   /* WORK */
   .work-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2.5rem;}
@@ -95,22 +112,40 @@
   @media (max-width:760px){ .about-wrap{grid-template-columns:1fr;} }
 
   /* SERVICES */
-  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem;}
-  .svc{border:1px solid var(--line); border-radius:4px; padding:2rem; background:var(--bg-alt);}
-  .svc.pop{border-color:var(--accent);}
-  .svc-tag{color:var(--accent); font-size:.75rem; margin-bottom:1rem;}
-  .svc h3{font-size:1.3rem; margin-bottom:.5rem;}
-  .svc ul{list-style:none; padding:0; margin:1.2rem 0;}
-  .svc li{padding:.4rem 0; color:var(--muted); font-size:.92rem; border-top:1px solid var(--line);}
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem;}
+  .svc{position:relative; border:1px solid var(--line); border-radius:22px; padding:2.6rem 2.2rem; background:var(--bg-alt); text-align:center;}
+  .svc.pop{border-color:var(--accent); background:linear-gradient(180deg,rgba(124,92,250,.1),var(--bg-alt) 60%); box-shadow:0 0 44px var(--accent-glow);}
+  .svc-badge{position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:.68rem; font-weight:700; letter-spacing:.06em; padding:.4rem 1.1rem; border-radius:999px;}
+  .svc h3{font-family:'Poppins',sans-serif; font-style:normal; font-size:1.3rem; font-weight:600;}
+  .svc-price{margin-top:1.1rem; font-family:'Poppins',sans-serif; font-weight:800; font-size:2.6rem; color:var(--text);}
+  .svc.pop .svc-price{color:var(--accent);}
+  .svc-price .unit{font-size:.85rem; font-weight:400; color:var(--muted); margin-left:.2rem;}
+  .svc-desc{color:var(--muted); font-size:.92rem; margin:.7rem auto 1.8rem; max-width:30ch;}
+  .svc-list{list-style:none; padding:0; margin:0 0 2.2rem; text-align:left;}
+  .svc-list li{display:flex; align-items:center; gap:.75rem; padding:.55rem 0; color:var(--text); font-size:.92rem;}
+  .check{width:20px; height:20px; border-radius:50%; background:rgba(124,92,250,.15); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.7rem; flex-shrink:0;}
+  .svc-btn{display:block; width:100%; text-align:center; padding:.9rem; border-radius:999px; font-weight:600; font-size:.92rem;}
+  .svc-btn.ghost{background:var(--bg); border:1px solid var(--line); color:var(--text);}
+  .svc-btn.solid{background:var(--accent); color:#fff; box-shadow:0 0 26px var(--accent-glow);}
   @media (max-width:700px){ .services-grid{grid-template-columns:1fr;} }
 
   /* CONTACT */
-  .contact{text-align:left;}
-  .contact h2{font-size:clamp(1.8rem,4vw,2.6rem); max-width:16ch;}
-  .contact-links{margin-top:2rem; display:flex; flex-direction:column; gap:.6rem; font-size:1rem;}
-  .contact-links a{color:var(--accent);}
-  .socials{margin-top:2.5rem; display:flex; gap:1.4rem; font-size:.9rem; color:var(--muted);}
-  .socials a:hover{color:var(--text);}
+  .contact-v2{padding-top:2rem;}
+  .contact-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:4rem;}
+  .contact-title{font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(2rem,5vw,3rem); color:var(--accent); letter-spacing:-.01em;}
+  .contact-sub{color:var(--muted); margin-top:1rem; max-width:44ch;}
+  .talk-form{margin-top:2.5rem; display:flex; flex-direction:column; gap:1.4rem;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem;}
+  .field label{display:block; font-size:.85rem; color:var(--muted); margin-bottom:.5rem;}
+  .field input, .field textarea{width:100%; background:var(--bg-alt); border:1px solid var(--line); border-radius:10px; padding:.85rem 1rem; color:var(--text); font-family:inherit; font-size:.95rem;}
+  .field textarea{resize:vertical;}
+  .submit-btn{background:var(--accent); color:#fff; border:none; padding:1rem; border-radius:999px; font-weight:700; letter-spacing:.04em; font-size:.9rem; cursor:pointer; box-shadow:0 0 26px var(--accent-glow);}
+  .connect-label{color:var(--muted); font-size:.8rem; letter-spacing:.08em; margin-bottom:.5rem;}
+  .connect-link{display:flex; justify-content:space-between; align-items:center; padding:1.1rem 0; border-top:1px solid var(--line); color:var(--text); font-size:1rem;}
+  .contact-links-col .connect-link:last-child{border-bottom:1px solid var(--line);}
+  .connect-link span{color:var(--muted); font-size:.85rem;}
+  .connect-link:hover{color:var(--accent);}
+  @media (max-width:760px){ .contact-grid{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} }
 
   footer{border-top:1px solid var(--line); padding:2rem 1.5rem; text-align:center; color:var(--muted); font-size:.85rem;}
 </style>
@@ -129,17 +164,40 @@
 </header>
 
 <section class="hero">
+  <!-- PHOTO: drop the image file into the images/ folder and it will show here -->
+  <div class="avatar">
+    <img src="images/hero.jpg" alt="Micheal Olashubomi" onerror="this.style.display='none'; this.parentElement.textContent='MO';">
+  </div>
   <div>
     <div class="eyebrow">Hi, I'm</div>
     <h1>Micheal Olashubomi</h1>
-    <p>Brand Experience Designer — Full-System Design · Web · Product · UI/UX · Ad Creatives.</p>
+    <p>I help brands communicate better through simple, refined, and effective design. My work covers social media content, flyers, posters, Brand Designs and other visual solutions that make brands look professional.</p>
     <div class="hero-ctas">
       <a class="btn-primary" href="#contact">Start a Project</a>
       <a class="btn-ghost" href="#work">View Portfolio</a>
     </div>
   </div>
-  <!-- PHOTO PLACEHOLDER: replace this block with an <img src="..."> of Micheal, same treatment as Buchi's hero photo -->
-  <div class="avatar">MO</div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>FULL BRAND IDENTITY<span class="sep">/</span>STYLE GUIDES<span class="sep">/</span>UI/UX &amp; APP DESIGN<span class="sep">/</span>SOCIAL MEDIA &amp; AD CREATIVES<span class="sep">/</span>WEB DESIGN<span class="sep">/</span>MERCHANDISE &amp; PACKAGING MOCKUPS<span class="sep">/</span>PRINT DESIGN<span class="sep">/</span>ILLUSTRATION<span class="sep">/</span></span>
+    <span>FULL BRAND IDENTITY<span class="sep">/</span>STYLE GUIDES<span class="sep">/</span>UI/UX &amp; APP DESIGN<span class="sep">/</span>SOCIAL MEDIA &amp; AD CREATIVES<span class="sep">/</span>WEB DESIGN<span class="sep">/</span>MERCHANDISE &amp; PACKAGING MOCKUPS<span class="sep">/</span>PRINT DESIGN<span class="sep">/</span>ILLUSTRATION<span class="sep">/</span></span>
+  </div>
+</div>
+
+<section id="about" class="about-intro">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <p class="lede">Some designers hand you a logo and call it done. I hand you a brand that works.</p>
+    <p>I'm Micheal, a Brand Identity &amp; Experience Designer specialising in building complete visual systems from the ground up. Every colour, typeface, and layout decision I make is tied to one goal: making your brand impossible to ignore and impossible to forget.</p>
+    <p>I've built brand systems for wellness companies, hospitality platforms, and faith-based organisations, translating strategy into visuals that perform across every touchpoint: app screens, ad creatives, merchandise, packaging, and pitch decks.</p>
+    <div class="stats-row">
+      <div><div class="stat-num">100+</div><div class="stat-label">Projects completed</div></div>
+      <div><div class="stat-num">100+</div><div class="stat-label">Happy clients</div></div>
+      <div><div class="stat-num">5+</div><div class="stat-label">Years experience</div></div>
+    </div>
+  </div>
 </section>
 
 <section id="work">
@@ -150,7 +208,7 @@
     <!-- Empty on purpose — send the project grid (images + titles + which Behance project each links to) and these get swapped in, each card linking to its own project page, not just the profile. -->
     <div class="empty-state">
       <strong>Project grid coming soon</strong>
-      Send the images, titles, and each project's individual Behance link — every card here will open its own project page, not just the profile.
+      Send the images, titles, and each project's individual Behance link, every card here will open its own project page, not just the profile.
     </div>
   </div>
 </section>
@@ -160,10 +218,10 @@
     <h2 style="margin-bottom:2.2rem;">Client Love</h2>
     <div class="reviews-grid">
       <div class="review">
-        <p class="quote">"Micheal didn't just design our logo — he gave us a whole visual language. Every touchpoint, from app screens to packaging, finally feels like one brand."</p>
+        <p class="quote">"Micheal didn't just design our logo, he gave us a whole visual language. Every touchpoint, from app screens to packaging, finally feels like one brand."</p>
         <div class="review-who">
           <div class="initial">A</div>
-          <div><div class="review-name">Adaeze Chukwu</div><div class="review-loc">Lagos, Nigeria</div></div>
+          <div><div class="review-name">Akeem Sameena</div><div class="review-loc">Lagos, Nigeria</div></div>
         </div>
       </div>
       <div class="review">
@@ -191,72 +249,63 @@
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap about-wrap">
-    <div>
-      <div class="eyebrow">About</div>
-      <h2>Some designers hand you a logo and call it done.</h2>
-    </div>
-    <div>
-      <p class="lede">I hand you a brand that works.</p>
-      <p>I'm Micheal, a Brand Identity &amp; Experience Designer specialising in building complete visual systems from the ground up. Every colour, typeface, and layout decision I make is tied to one goal: making your brand impossible to ignore and impossible to forget.</p>
-      <p>I've built brand systems for wellness companies, hospitality platforms, and faith-based organisations, translating strategy into visuals that perform across every touchpoint: app screens, ad creatives, merchandise, packaging, and pitch decks.</p>
-      <ul class="deliver-list">
-        <li>Full Brand Identity &amp; Style Guides</li>
-        <li>UI/UX &amp; App Design</li>
-        <li>Social Media &amp; Ad Creatives</li>
-        <li>Web Design</li>
-        <li>Merchandise &amp; Packaging Mockups</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <section id="services">
   <div class="wrap">
     <div class="eyebrow">Services</div>
     <h2 style="margin-bottom:2.4rem;">Flexible packages for every need</h2>
     <div class="services-grid">
-      <div class="svc pop">
-        <div class="svc-tag">POPULAR</div>
-        <h3>Full Brand Identity &amp; Systems</h3>
-        <p style="color:var(--muted); font-size:.92rem;">A complete visual system built from the ground up.</p>
-        <ul>
-          <li>Full logo suite &amp; style guide</li>
-          <li>Merchandise &amp; packaging mockups</li>
-          <li>Pitch deck design</li>
-          <li>Unlimited revisions</li>
-        </ul>
-        <a class="btn-ghost" href="#contact">Get Started</a>
-      </div>
       <div class="svc">
-        <div class="svc-tag">CUSTOM / PROJECT BASE</div>
-        <h3>Digital &amp; Product Design</h3>
-        <p style="color:var(--muted); font-size:.92rem;">UI/UX, web, and ad creatives that perform.</p>
-        <ul>
-          <li>UI/UX &amp; app design</li>
-          <li>Web design</li>
-          <li>Social media &amp; ad creatives</li>
-          <li>Optimised for engagement</li>
+        <h3>Full Brand Identity &amp; Systems</h3>
+        <div class="svc-price">Custom <span class="unit">/Project base</span></div>
+        <p class="svc-desc">A complete visual system built from the ground up.</p>
+        <ul class="svc-list">
+          <li><span class="check">✓</span>Full logo suite &amp; style guide</li>
+          <li><span class="check">✓</span>Merchandise &amp; packaging mockups</li>
+          <li><span class="check">✓</span>Pitch deck design</li>
+          <li><span class="check">✓</span>Unlimited revisions</li>
         </ul>
-        <a class="btn-ghost" href="#contact">Let's Talk</a>
+        <a class="svc-btn ghost" href="#contact">Get Started</a>
+      </div>
+      <div class="svc pop">
+        <div class="svc-badge">POPULAR</div>
+        <h3>Digital &amp; Product Design</h3>
+        <div class="svc-price">Custom <span class="unit">/Project base</span></div>
+        <p class="svc-desc">UI/UX, web, and ad creatives that perform.</p>
+        <ul class="svc-list">
+          <li><span class="check">✓</span>UI/UX &amp; app design</li>
+          <li><span class="check">✓</span>Web design</li>
+          <li><span class="check">✓</span>Social media &amp; ad creatives</li>
+          <li><span class="check">✓</span>Optimised for engagement</li>
+        </ul>
+        <a class="svc-btn solid" href="#contact">Let's Talk</a>
       </div>
     </div>
     <p style="color:var(--muted); font-size:.85rem; margin-top:1.5rem;">All prices are starting points. Final quote based on project scope.</p>
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section id="contact" class="contact-v2">
   <div class="wrap">
-    <h2>Let's bring your brand into existence</h2>
-    <p style="color:var(--muted); max-width:42ch; margin-top:1rem;">Ready to build a brand system that performs across every touchpoint? Reach out.</p>
-    <div class="contact-links">
-      <a href="mailto:owolabiolashubomi@yahoo.com">owolabiolashubomi@yahoo.com</a>
-      <a href="tel:+2349055520418">0905 552 0418</a>
-    </div>
-    <div class="socials">
-      <a href="https://www.behance.net/olashubomiowolabi" target="_blank" rel="noopener">Behance</a>
-      <a href="https://x.com/theolashubomi?s=11" target="_blank" rel="noopener">X</a>
+    <div class="contact-grid">
+      <div class="contact-form-col">
+        <h2 class="contact-title">LET'S TALK</h2>
+        <p class="contact-sub">Ready to elevate your brand? Let's discuss your project and create something amazing.</p>
+        <form class="talk-form" action="mailto:owolabiolashubomi@yahoo.com" method="post" enctype="text/plain">
+          <div class="form-row">
+            <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" name="name" placeholder="Jane Smith"></div>
+            <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="email" placeholder="jane@example.com"></div>
+          </div>
+          <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" placeholder="Tell me about your project..."></textarea></div>
+          <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+      </div>
+      <div class="contact-links-col">
+        <div class="connect-label">CONNECT WITH ME</div>
+        <a class="connect-link" href="mailto:owolabiolashubomi@yahoo.com">Email <span>↗</span></a>
+        <a class="connect-link" href="tel:+2349055520418">Call <span>↗</span></a>
+        <a class="connect-link" href="https://www.behance.net/olashubomiowolabi" target="_blank" rel="noopener">Behance <span>↗</span></a>
+        <a class="connect-link" href="https://x.com/theolashubomi?s=11" target="_blank" rel="noopener">X (Twitter) <span>↗</span></a>
+      </div>
     </div>
   </div>
 </section>
