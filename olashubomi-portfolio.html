@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Micheal Olashubomi — Brand Experience Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500;1,9..144,600&family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08070c; --bg-alt:#131018; --text:#f4f2f8; --muted:#9d97ab;
+    --line:#242030; --accent:#7c5cfa; --accent-dim:#4d3aa8; --accent-glow:rgba(124,92,250,.45);
+    font-size:16px; box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Inter',system-ui,-apple-system,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1{font-family:'Poppins',system-ui,sans-serif; font-weight:700; margin:0; letter-spacing:-0.01em;}
+  h2,h3{font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:600; margin:0; letter-spacing:-0.01em;}
+  #services h3{font-style:normal; font-family:'Poppins',sans-serif; font-weight:600;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  section{padding:6rem 1.5rem;}
+  .wrap{max-width:1100px; margin:0 auto;}
+  .eyebrow{color:var(--muted); font-size:.85rem; margin-bottom:.6rem;}
+
+  /* NAV */
+  header{position:sticky; top:0; top:env(safe-area-inset-top,0px); z-index:10; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 1.5rem; background:rgba(13,15,18,.85); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  header .name{font-family:'Poppins',sans-serif; font-weight:600; font-size:1.2rem;}
+  nav{display:flex; gap:1.8rem; font-size:.92rem; color:var(--muted);}
+  nav a:hover{color:var(--text);}
+  .talk-btn{background:var(--accent); color:#fff; padding:.6rem 1.3rem; border-radius:999px; font-size:.88rem; font-weight:500; box-shadow:0 0 22px var(--accent-glow);}
+  .talk-btn:hover{background:#6a4be8;}
+  @media (max-width:640px){ nav{display:none;} }
+
+  /* HERO */
+  .hero{padding:5rem 1.5rem 4rem; display:grid; grid-template-columns:1.2fr .8fr; gap:3rem; align-items:center; max-width:1100px; margin:0 auto;}
+  .hero .eyebrow{color:var(--accent);}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.6rem); line-height:1.08;}
+  .hero p{color:var(--muted); max-width:46ch; margin-top:1.2rem; font-size:1.02rem;}
+  .hero-ctas{margin-top:1.8rem; display:flex; gap:1rem; flex-wrap:wrap;}
+  .btn-primary{background:var(--accent); color:#fff; padding:.85rem 1.6rem; border-radius:999px; font-size:.92rem; font-weight:500; box-shadow:0 0 26px var(--accent-glow);}
+  .btn-ghost{border:1px solid var(--line); padding:.85rem 1.6rem; border-radius:999px; font-size:.92rem; color:var(--text);}
+  .avatar{width:260px; height:320px; border-radius:22px; margin-left:auto; background:linear-gradient(155deg,var(--bg-alt),#1c1826); border:1px dashed var(--accent-dim); display:flex; align-items:center; justify-content:center; color:var(--muted); font-family:'Poppins',sans-serif; font-weight:600; font-size:2.4rem; box-shadow:0 0 60px var(--accent-glow);}
+  @media (max-width:760px){ .hero{grid-template-columns:1fr; text-align:left;} .avatar{margin:0; width:170px; height:210px; font-size:1.8rem;} }
+
+  /* WORK */
+  .work-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2.5rem;}
+  .work-head h2{font-size:2.2rem;}
+  .empty-state{border:1px dashed var(--line); border-radius:16px; padding:3.5rem 2rem; text-align:center; color:var(--muted); background:var(--bg-alt);}
+  .empty-state strong{color:var(--text); display:block; margin-bottom:.5rem; font-family:'Poppins',sans-serif; font-weight:600;}
+  /* Template for a real project card once designs are sent — duplicate this block per project:
+  <div class="card">
+    <div class="card-img"><img src="project-image.jpg" alt=""></div>
+    <a class="card-caption" href="[Behance link to this specific project]" target="_blank" rel="noopener">
+      <span class="card-tag">Category</span>
+      <h3>Project Title</h3>
+      <span class="card-link">View Details ↗</span>
+    </a>
+  </div>
+  */
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.8rem;}
+  .card{position:relative; border-radius:16px; overflow:hidden; background:var(--bg-alt);}
+  .card-img{aspect-ratio:4/3; overflow:hidden;}
+  .card-img img{width:100%; height:100%; object-fit:cover;}
+  .card-caption{position:absolute; left:0; right:0; bottom:0; padding:1.2rem 1.3rem; background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 80%); display:block;}
+  .card-tag{display:inline-block; font-size:.7rem; background:var(--accent); color:#fff; padding:.25rem .7rem; border-radius:999px; margin-bottom:.5rem;}
+  .card h3{font-family:'Inter',sans-serif; font-style:normal; font-size:1.05rem; font-weight:600; color:#fff;}
+  .card-link{display:inline-block; margin-top:.6rem; font-size:.82rem; color:#fff;}
+  @media (max-width:700px){ .grid{grid-template-columns:1fr;} }
+
+  /* WHATSAPP FLOAT */
+  .wa-float{position:fixed; right:1.4rem; bottom:calc(1.4rem + env(safe-area-inset-bottom,0px)); z-index:20; width:52px; height:52px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 20px rgba(0,0,0,.4);}
+  .wa-float svg{width:26px; height:26px;}
+
+  /* TESTIMONIALS */
+  .reviews-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.6rem;}
+  .review{border:1px solid var(--line); border-radius:4px; padding:1.6rem; background:var(--bg-alt);}
+  .review-who{display:flex; align-items:center; gap:.7rem; margin-top:1rem;}
+  .initial{width:34px; height:34px; border-radius:50%; background:var(--accent-dim); color:#0d0f12; display:flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:600;}
+  .review-name{font-size:.9rem;}
+  .review-loc{color:var(--muted); font-size:.8rem;}
+  .review p.quote{color:#d9d3c7; font-size:.94rem;}
+  @media (max-width:700px){ .reviews-grid{grid-template-columns:1fr;} }
+
+  /* ABOUT */
+  .about-wrap{display:grid; grid-template-columns:1fr 1fr; gap:3rem;}
+  .about-wrap h2{font-size:1.9rem; margin-bottom:1.2rem;}
+  .about-wrap .lede{font-family:'Fraunces',serif; font-size:1.25rem; color:var(--accent); margin-bottom:1.2rem;}
+  .about-wrap p{color:var(--muted); margin-bottom:1rem;}
+  .deliver-list{list-style:none; padding:0; margin-top:1.4rem;}
+  .deliver-list li{padding:.6rem 0; border-top:1px solid var(--line); color:var(--text); font-size:.95rem;}
+  @media (max-width:760px){ .about-wrap{grid-template-columns:1fr;} }
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem;}
+  .svc{border:1px solid var(--line); border-radius:4px; padding:2rem; background:var(--bg-alt);}
+  .svc.pop{border-color:var(--accent);}
+  .svc-tag{color:var(--accent); font-size:.75rem; margin-bottom:1rem;}
+  .svc h3{font-size:1.3rem; margin-bottom:.5rem;}
+  .svc ul{list-style:none; padding:0; margin:1.2rem 0;}
+  .svc li{padding:.4rem 0; color:var(--muted); font-size:.92rem; border-top:1px solid var(--line);}
+  @media (max-width:700px){ .services-grid{grid-template-columns:1fr;} }
+
+  /* CONTACT */
+  .contact{text-align:left;}
+  .contact h2{font-size:clamp(1.8rem,4vw,2.6rem); max-width:16ch;}
+  .contact-links{margin-top:2rem; display:flex; flex-direction:column; gap:.6rem; font-size:1rem;}
+  .contact-links a{color:var(--accent);}
+  .socials{margin-top:2.5rem; display:flex; gap:1.4rem; font-size:.9rem; color:var(--muted);}
+  .socials a:hover{color:var(--text);}
+
+  footer{border-top:1px solid var(--line); padding:2rem 1.5rem; text-align:center; color:var(--muted); font-size:.85rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">Micheal.</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+  <a class="talk-btn" href="#contact">Let's Talk</a>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Hi, I'm</div>
+    <h1>Micheal Olashubomi</h1>
+    <p>Brand Experience Designer — Full-System Design · Web · Product · UI/UX · Ad Creatives.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#contact">Start a Project</a>
+      <a class="btn-ghost" href="#work">View Portfolio</a>
+    </div>
+  </div>
+  <!-- PHOTO PLACEHOLDER: replace this block with an <img src="..."> of Micheal, same treatment as Buchi's hero photo -->
+  <div class="avatar">MO</div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <h2>Selected Work</h2>
+    </div>
+    <!-- Empty on purpose — send the project grid (images + titles + which Behance project each links to) and these get swapped in, each card linking to its own project page, not just the profile. -->
+    <div class="empty-state">
+      <strong>Project grid coming soon</strong>
+      Send the images, titles, and each project's individual Behance link — every card here will open its own project page, not just the profile.
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <h2 style="margin-bottom:2.2rem;">Client Love</h2>
+    <div class="reviews-grid">
+      <div class="review">
+        <p class="quote">"Micheal didn't just design our logo — he gave us a whole visual language. Every touchpoint, from app screens to packaging, finally feels like one brand."</p>
+        <div class="review-who">
+          <div class="initial">A</div>
+          <div><div class="review-name">Adaeze Chukwu</div><div class="review-loc">Lagos, Nigeria</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <p class="quote">"We'd worked with agencies before, but nobody translated our strategy into visuals this precisely. The systems thinking really stood out."</p>
+        <div class="review-who">
+          <div class="initial">M</div>
+          <div><div class="review-name">Marcus Whitfield</div><div class="review-loc">London, UK</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <p class="quote">"From pitch deck to product UI, everything he touched felt considered. Communication was clear and revisions were fast."</p>
+        <div class="review-who">
+          <div class="initial">F</div>
+          <div><div class="review-name">Fatima Al-Rashid</div><div class="review-loc">Dubai, UAE</div></div>
+        </div>
+      </div>
+      <div class="review">
+        <p class="quote">"Our brand finally looks as good as our product performs. Clean, confident, and impossible to confuse with anyone else's."</p>
+        <div class="review-who">
+          <div class="initial">P</div>
+          <div><div class="review-name">Priya Nair</div><div class="review-loc">Singapore</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-wrap">
+    <div>
+      <div class="eyebrow">About</div>
+      <h2>Some designers hand you a logo and call it done.</h2>
+    </div>
+    <div>
+      <p class="lede">I hand you a brand that works.</p>
+      <p>I'm Micheal, a Brand Identity &amp; Experience Designer specialising in building complete visual systems from the ground up. Every colour, typeface, and layout decision I make is tied to one goal: making your brand impossible to ignore and impossible to forget.</p>
+      <p>I've built brand systems for wellness companies, hospitality platforms, and faith-based organisations, translating strategy into visuals that perform across every touchpoint: app screens, ad creatives, merchandise, packaging, and pitch decks.</p>
+      <ul class="deliver-list">
+        <li>Full Brand Identity &amp; Style Guides</li>
+        <li>UI/UX &amp; App Design</li>
+        <li>Social Media &amp; Ad Creatives</li>
+        <li>Web Design</li>
+        <li>Merchandise &amp; Packaging Mockups</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h2 style="margin-bottom:2.4rem;">Flexible packages for every need</h2>
+    <div class="services-grid">
+      <div class="svc pop">
+        <div class="svc-tag">POPULAR</div>
+        <h3>Full Brand Identity &amp; Systems</h3>
+        <p style="color:var(--muted); font-size:.92rem;">A complete visual system built from the ground up.</p>
+        <ul>
+          <li>Full logo suite &amp; style guide</li>
+          <li>Merchandise &amp; packaging mockups</li>
+          <li>Pitch deck design</li>
+          <li>Unlimited revisions</li>
+        </ul>
+        <a class="btn-ghost" href="#contact">Get Started</a>
+      </div>
+      <div class="svc">
+        <div class="svc-tag">CUSTOM / PROJECT BASE</div>
+        <h3>Digital &amp; Product Design</h3>
+        <p style="color:var(--muted); font-size:.92rem;">UI/UX, web, and ad creatives that perform.</p>
+        <ul>
+          <li>UI/UX &amp; app design</li>
+          <li>Web design</li>
+          <li>Social media &amp; ad creatives</li>
+          <li>Optimised for engagement</li>
+        </ul>
+        <a class="btn-ghost" href="#contact">Let's Talk</a>
+      </div>
+    </div>
+    <p style="color:var(--muted); font-size:.85rem; margin-top:1.5rem;">All prices are starting points. Final quote based on project scope.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's bring your brand into existence</h2>
+    <p style="color:var(--muted); max-width:42ch; margin-top:1rem;">Ready to build a brand system that performs across every touchpoint? Reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:owolabiolashubomi@yahoo.com">owolabiolashubomi@yahoo.com</a>
+      <a href="tel:+2349055520418">0905 552 0418</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.behance.net/olashubomiowolabi" target="_blank" rel="noopener">Behance</a>
+      <a href="https://x.com/theolashubomi?s=11" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 — Micheal Olashubomi</footer>
+
+<a class="wa-float" href="https://wa.me/2349055520418" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.36.66 4.55 1.8 6.42L4 29l7.72-1.76a12.9 12.9 0 0 0 4.3.74C22.64 28 28 22.6 28 15.98 28 9.4 22.64 3 16.02 3Zm7.1 17.32c-.3.85-1.5 1.57-2.47 1.77-.66.14-1.5.25-4.4-.94-3.7-1.53-6.07-5.28-6.25-5.53-.18-.24-1.5-1.99-1.5-3.8 0-1.8.94-2.68 1.28-3.05.34-.37.73-.46.98-.46.24 0 .49 0 .7.01.23.01.53-.09.83.63.3.73 1.03 2.53 1.12 2.71.09.19.15.4.03.65-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.37-.16.73.21.37.94 1.55 2.02 2.51 1.39 1.24 2.56 1.62 2.93 1.8.37.19.58.15.8-.09.21-.24.9-1.05 1.15-1.41.24-.37.49-.3.82-.18.34.12 2.13 1.01 2.5 1.19.36.18.6.27.69.42.09.15.09.86-.2 1.71Z"/></svg>
+</a>
+
+</body>
+</html>
