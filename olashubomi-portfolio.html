@@ -128,7 +128,8 @@
   .check{width:20px; height:20px; border-radius:50%; background:rgba(124,92,250,.15); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:.7rem; flex-shrink:0;}
   .svc-btn{display:block; width:100%; text-align:center; padding:.9rem; border-radius:999px; font-weight:600; font-size:.92rem;}
   .svc-btn.ghost{background:var(--bg); border:1px solid var(--line); color:var(--text);}
-  .svc-btn.solid{background:var(--accent); color:#fff; box-shadow:0 0 26px var(--accent-glow);}
+  .svc-btn.solid{background:linear-gradient(135deg,var(--accent),var(--accent-blue)); color:#fff; box-shadow:0 0 26px var(--accent-glow); transition:box-shadow .25s ease, filter .25s ease;}
+  .svc-btn.solid:hover{filter:brightness(1.12); box-shadow:0 0 26px var(--accent-blue-glow);}
   @media (max-width:700px){ .services-grid{grid-template-columns:1fr;} }
 
   /* CONTACT */
@@ -141,13 +142,20 @@
   .field label{display:block; font-size:.85rem; color:var(--muted); margin-bottom:.5rem;}
   .field input, .field textarea{width:100%; background:var(--bg-alt); border:1px solid var(--line); border-radius:10px; padding:.85rem 1rem; color:var(--text); font-family:inherit; font-size:.95rem;}
   .field textarea{resize:vertical;}
-  .submit-btn{background:var(--accent); color:#fff; border:none; padding:1rem; border-radius:999px; font-weight:700; letter-spacing:.04em; font-size:.9rem; cursor:pointer; box-shadow:0 0 26px var(--accent-glow);}
+  .submit-btn{background:linear-gradient(135deg,var(--accent),var(--accent-blue)); color:#fff; border:none; padding:1rem; border-radius:999px; font-weight:700; letter-spacing:.04em; font-size:.9rem; cursor:pointer; box-shadow:0 0 26px var(--accent-glow); transition:box-shadow .25s ease, filter .25s ease;}
+  .submit-btn:hover{filter:brightness(1.12); box-shadow:0 0 26px var(--accent-blue-glow);}
   .connect-label{color:var(--muted); font-size:.8rem; letter-spacing:.08em; margin-bottom:.5rem;}
   .connect-link{display:flex; justify-content:space-between; align-items:center; padding:1.1rem 0; border-top:1px solid var(--line); color:var(--text); font-size:1rem;}
   .contact-links-col .connect-link:last-child{border-bottom:1px solid var(--line);}
   .connect-link span{color:var(--muted); font-size:.85rem;}
   .connect-link:hover{color:var(--accent);}
   @media (max-width:760px){ .contact-grid{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} }
+
+  /* FINAL CTA BANNER */
+  .final-cta{background:linear-gradient(135deg,var(--accent-blue) 0%,#8ec3ff 100%); padding:6.5rem 1.5rem; text-align:center;}
+  .final-cta-title{font-family:'Poppins',sans-serif; font-style:normal; font-weight:800; color:#000; font-size:clamp(2rem,6vw,3.3rem); line-height:1.16; letter-spacing:-0.01em;}
+  .final-cta-btn{display:inline-flex; align-items:center; gap:.6rem; margin-top:2.3rem; background:#0d0d10; color:#fff; padding:1rem 2.1rem; border-radius:999px; font-family:'Poppins',sans-serif; font-weight:700; font-size:.9rem; letter-spacing:.04em;}
+  .final-cta-btn:hover{background:#000;}
 
   footer{border-top:1px solid var(--line); padding:2rem 1.5rem; text-align:center; color:var(--muted); font-size:.85rem;}
 </style>
@@ -210,7 +218,7 @@
     <!-- Empty on purpose — send the project grid (images + titles + which Behance project each links to) and these get swapped in, each card linking to its own project page, not just the profile. -->
     <div class="empty-state">
       <strong>Project grid coming soon</strong>
-      Send the images, titles, and each project's individual Behance link, every card here will open its own project page, not just the profile.
+     
     </div>
   </div>
 </section>
@@ -282,7 +290,7 @@
         <a class="svc-btn solid" href="#contact">Let's Talk</a>
       </div>
     </div>
-    <p style="color:var(--muted); font-size:.85rem; margin-top:1.5rem;">All prices are starting points. Final quote based on project scope.</p>
+    <p style="color:var(--muted); font-size:.85rem; margin-top:1.5rem;"></p>
   </div>
 </section>
 
@@ -312,7 +320,14 @@
   </div>
 </section>
 
-<footer>© 2026; Owolabi Micheal Olashubomi</footer>
+<section class="final-cta">
+  <div class="wrap">
+    <h2 class="final-cta-title">LET'S CREATE YOUR<br>NEXT BIG IDEA</h2>
+    <a class="final-cta-btn" href="mailto:owolabiolashubomi@yahoo.com">SEND AN EMAIL <span>↗</span></a>
+  </div>
+</section>
+
+<footer>Owolabi Micheal Olashubomi</footer>
 
 <a class="wa-float" href="https://wa.me/2349055520418" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.36.66 4.55 1.8 6.42L4 29l7.72-1.76a12.9 12.9 0 0 0 4.3.74C22.64 28 28 22.6 28 15.98 28 9.4 22.64 3 16.02 3Zm7.1 17.32c-.3.85-1.5 1.57-2.47 1.77-.66.14-1.5.25-4.4-.94-3.7-1.53-6.07-5.28-6.25-5.53-.18-.24-1.5-1.99-1.5-3.8 0-1.8.94-2.68 1.28-3.05.34-.37.73-.46.98-.46.24 0 .49 0 .7.01.23.01.53-.09.83.63.3.73 1.03 2.53 1.12 2.71.09.19.15.4.03.65-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.37-.16.73.21.37.94 1.55 2.02 2.51 1.39 1.24 2.56 1.62 2.93 1.8.37.19.58.15.8-.09.21-.24.9-1.05 1.15-1.41.24-.37.49-.3.82-.18.34.12 2.13 1.01 2.5 1.19.36.18.6.27.69.42.09.15.09.86-.2 1.71Z"/></svg>
